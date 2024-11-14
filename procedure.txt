@@ -1,0 +1,47 @@
+1.必要なヘッダファイルを加える
+    ・stdio.h (printf()) ... 画面に文字を出力
+    ・stdlib.h (system("cls")) ... 画面をクリア
+    ・string.h (memset()) ... 配列を初期化
+    ・time.h (sleep(INTERVAL)) ... フレームレートを制御(指定した時間プログラムを停止する処理)
+    ・conio.h (_kbhit(),_getch()) ... キーが押されたかの確認,キーの入力を取得
+    ・windows.h (sleep()) ... Windows APIを利用してsleep関数を実行
+
+2.定数を定義する
+    ・#define SCREEN_WIDTH , SCREEN_HEITHT ... 画面サイズ
+    ・#define FPS ... フレームレート
+    ・#define INTERVAL ... フレーム間の待機時間
+    ・#define INVADER_COLU<MN , INVADER_ROW ... インベーダーの行数と列数
+    ・#define VULLET_MAX ... 同時に発射できる弾の最大数
+
+3.列挙型,構造体を定義する
+    ・TILE_NONE ... 何もない状態
+    ・TILE_INVADER ... インベーダー
+    ・TILE_BULLET ... 弾
+    ・TILE_PLAYER ... プレイヤー
+    ・TILE_MAX ... タイルの数
+    ※上から順に、0,1,2,3,4と配列の整数値をもつ
+
+    ・INVADERの構造体 ... int x , y (位置を示す)
+    ・BULLETの構造体 ... int active (弾が画面上に存在するかを示す)
+
+4.配列,変数を定義する
+    int screen[SCREEN_HEIGHT][SCREEN_WIDTH]; (どの位置にどのタイルがあるか)
+    INVADER invaders[INVADER_ROW][INVADER_COLUMN]; (インベーダーの位置)
+    BULLET bullets[BULLET_MAX]; (弾の位置およびアクティブ状態)
+
+    int invaderDirection; (敵キャラの移動方向)
+    int frameCount; (フレーム数のカウント)
+    int playerX; (プレイヤーの位置)
+    int gameRunning; (ゲームが実行中かどうか)
+    int gameOver; (ゲームオーバーしたかどうか)
+    int rightMoveCount; (敵が右に移動した回数をカウント ⇒ 8移動したら下に移動して逆方向に移動)
+
+    const char* tileAA[TILE_MAX] = {
+    " ", // TILE_NONE       ... 空白
+    "I", // TILE_INVADER    ... インベーダー
+    "|", // TILE_BULLET     ... 弾
+    "P"  // TILE_PLAYER     ... プレイヤー
+    };
+    ※タイルに表示する文字を指定
+
+
